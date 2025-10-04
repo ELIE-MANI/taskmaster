@@ -11,3 +11,17 @@ export async function getTasks() {
   }
   return response.json(); 
 }
+
+export async function createTask(newTask) {
+  const response = await fetch(API_URL, { 
+    method: 'POST',
+    headers:{
+      'Content-Type': 'application/json',
+      authorization: `Bearer 17|OAkvhOPYN4VRJL2SkcnAzW3PvzyzYI4r4bYBklXoe6f28b04`
+    },
+    body: JSON.stringify(newTask)
+  });
+  if(!response.ok) {
+    throw new Error('Failed to create task')
+  }
+}
