@@ -42,3 +42,17 @@ export async function toggleTask(id) {
   return response.json();
 
 }
+
+export async function deleteTask(id) {
+  const response = await fetch(`${API_URL}/${id}`,{
+    method: 'DELETE',
+    headers: {
+      
+      authorization: `Bearer 17|OAkvhOPYN4VRJL2SkcnAzW3PvzyzYI4r4bYBklXoe6f28b04` 
+    }
+  });
+  if(!response.ok) {
+    throw new Error('Failed to delete task')
+  }
+  return response.json(); 
+}
