@@ -25,3 +25,20 @@ export async function createTask(newTask) {
     throw new Error('Failed to create task')
   }
 }
+
+export async function toggleTask(id) {
+  const response = await fetch(`${API_URL}/${id}`,{
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer 17|OAkvhOPYN4VRJL2SkcnAzW3PvzyzYI4r4bYBklXoe6f28b04`
+    },
+  body: JSON.stringify({ completed: true })
+
+  });
+  if(!response.ok) {
+    throw new Error('Failed to toggle task completion')
+  }
+  return response.json();
+
+}
